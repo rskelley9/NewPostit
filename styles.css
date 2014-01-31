@@ -1,6 +1,6 @@
 #board {
   font-family: monospace;
-  background-color: #9e8d68;
+  background-color: #f5feff;
   margin: 0;
   padding: 0;
   position: relative;
@@ -10,22 +10,40 @@
   display:none;
   position: absolute !important;
   top: 0px;
-  width: 160px;
-  height: 100px;
-  background-color: yellow;
+  width: 150px;
+  height: 150px;
+  background-color: #f1e09c;
   box-shadow: -2px 2px 5px #555;
   overflow: hidden;
   text-align: left;
 }
 
+.header .erase {
+  color:#bb9b1a;
+  float: left;
+}
+
+.header .erase:hover {
+  color:#eb7475;
+}
+
+.header .close {
+  color:#bb9b1a;
+}
+
+.header .close:hover {
+   color:#eb7475;
+}
+
+
 .post-it .header {
-  background-color: #c2c25b;
+  background-color: #f1e09c;
   text-align: right;
   padding: 2px;
 }
 
 .post-it .header:hover {
-  background-color: #a8a860;
+  background-color: #f4dc00;
 }
 
 .post-it .header a, .post-it .header a:visited {
