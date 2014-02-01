@@ -9,8 +9,9 @@ var movePostIt = function(id,x,y) {
 
 
 var showPostIt = function(id,array) {
-  randomAction = getAction(array)
+  var randomAction = getAction(array)
   $("#"+id).show(randomAction)
+  console.log(randomAction)
 }
 
 
@@ -26,8 +27,8 @@ var count = {
 function initialize() {
 
   $(document).click(function(event) {
-    //if there click target isn't a post-it, nor the span.close area then initialize postit
-    if ((($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false) && ($(event.target).is('#controls') === false) && ($(event.target).hasClass("content") === false) && ($(event.target).is("palette") === false) && ($(event.target).is("#pen-font") === false) && ($(event.target).is("#pen-color") === false)) {
+    // if there click target isn't a post-it, nor the span.close area then initialize postit
+    if ((($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false) && ($(event.target).is('#controls') === false) && ($(event.target).hasClass("content") === false) && ($(event.target).is("palette") === false) && ($(event.target).is("#pen-font") === false) && ($(event.target).is("#pen-color") === false)) {
 
       id = count.value
 
@@ -45,7 +46,7 @@ function initialize() {
 
       actions = ["clip","blind","bounce","explode","highlight", "shake", "scale", "pulsate", "slide", "size", "fold", "puff"]
 
-      showPostIt(id,actions)
+      showPostIt(id, actions)
 
       count.count()
     }
