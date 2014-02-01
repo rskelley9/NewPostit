@@ -11,7 +11,11 @@ $(document).ready(function(){
     }
     else if ($('.content').hasClass('ink'))
     {
-      $('.content').removeClass('ink')
+      $('.content').removeClass('ink').addClass('hand-write')
+    }
+    else if ($('.content').hasClass('hand-write'))
+    {
+      $('.content').removeClass('hand-write')
     }
     else
     {
