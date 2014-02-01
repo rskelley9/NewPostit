@@ -1,6 +1,6 @@
 /* @import url("netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 @import url("netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/
-@import url(http://fonts.googleapis.com/css?family=Patrick+Hand|Permanent+Marker|Rock+Salt);
+@import url(http://fonts.googleapis.com/css?family=Patrick+Hand|Permanent+Marker|Rock+Salt|Homemade+Apple|Covered+By+Your+Grace);
 
 
 #board {
@@ -8,7 +8,7 @@
   position: relative;
   margin: 0;
   padding: 0;
-  font-family: courier;
+  font-family: 'Homemade Apple', cursive;
 }
 
 .marker{
@@ -21,6 +21,10 @@
 
 .ink{
   font-family: 'Patrick Hand', cursive;
+}
+
+.hand-write{
+  font-family: 'Covered By Your Grace', cursive;
 }
 
 #palette{
@@ -37,6 +41,10 @@
   margin-left: 20%;
   margin-bottom: 2px;
   border-radius: 20;
+}
+
+#pen-color:hover, #pen-font:hover{
+  background-color: #eb7475;
 }
 
 #pen-color{
@@ -70,12 +78,16 @@
   text-align: left;
 }
 
+.content:focus {
+  background-color: #f3ee90;
+}
+
 .header .erase {
   color:#bb9b1a;
   float: left;
 }
 
-.header .erase:hover {
+.header .erase:hover, .header .close:hover {
   color:#eb7475;
 }
 
@@ -83,19 +95,17 @@
   color:#bb9b1a;
 }
 
-.header .close:hover {
- color:#eb7475;
-}
-
-
 .post-it .header {
   background-color: #f1e09c;
   text-align: right;
   padding: 2px;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .post-it .header:hover {
   background-color: #f4dc00;
+  max-height: 100px;
+  overflow: scroll;
 }
 
 .post-it .header a, .post-it .header a:visited {
@@ -111,5 +121,7 @@
 .post-it .content {
   padding: 10px;
   min-height: 70px;
+  max-height: 100px;
+  overflow:scroll;
   outline: none;
 }
