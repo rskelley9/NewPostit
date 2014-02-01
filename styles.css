@@ -1,5 +1,6 @@
 /* @import url("netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
-@import url("netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/@import url(http://fonts.googleapis.com/css?family=Permanent+Marker|Rock+Salt);
+@import url("netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/
+@import url(http://fonts.googleapis.com/css?family=Patrick+Hand|Permanent+Marker|Rock+Salt);
 
 
 #board {
@@ -11,11 +12,15 @@
 }
 
 .marker{
-font-family: 'Permanent Marker', cursive;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .pen{
-font-family: 'Rock Salt', cursive;
+  font-family: 'Rock Salt', cursive;
+}
+
+.ink{
+  font-family: 'Patrick Hand', cursive;
 }
 
 #palette{
@@ -25,7 +30,8 @@ font-family: 'Rock Salt', cursive;
 
 #pen-font{
   border: solid black;
-  padding-left: 3px;
+  font-family: 'Patrick Hand', cursive;
+  padding-left: 8px;
   width: 45%;
   margin-top: 2px;
   margin-left: 20%;
@@ -35,12 +41,13 @@ font-family: 'Rock Salt', cursive;
 
 #pen-color{
  border: solid black;
-  padding-left: 3px;
-  width: 55%;
-  margin-top: 5%;
-  margin-left: 15%;
-  margin-bottom: 2px;
-  border-radius: 20;
+ font-family: 'Patrick Hand', cursive;
+ padding-left: 12px;
+ width: 55%;
+ margin-top: 5%;
+ margin-left: 15%;
+ margin-bottom: 2px;
+ border-radius: 20;
 }
 
 #controls {
@@ -53,7 +60,6 @@ font-family: 'Rock Salt', cursive;
 }
 
 .post-it {
-  display:none;
   position: absolute !important;
   top: 0px;
   width: 150px;

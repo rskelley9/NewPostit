@@ -27,11 +27,11 @@ function initialize() {
 
   $(document).click(function(event) {
     //if there click target isn't a post-it, nor the span.close area then initialize postit
-    if ((($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false) && ($(event.target).is('#controls') === false) && ($(event.target).hasClass("content") === false)) {
+    if ((($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false) && ($(event.target).is('#controls') === false) && ($(event.target).hasClass("content") === false) && ($(event.target).is("palette") === false) && ($(event.target).is("#pen-font") === false) && ($(event.target).is("#pen-color") === false)) {
 
       id = count.value
 
-      newPostIt = "<div class='header'><span class='erase'>E</span><span class='close'>X</span></div>"
+      newPostIt = "<div class='header'><span class='erase'>Erase</span><span class='close'>X</span></div>"
 
       $("#board").append("<div id='" + id + "' class='post-it'>");
 
