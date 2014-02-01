@@ -1,12 +1,55 @@
 /* @import url("netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
- @import url("netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/
+@import url("netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");*/@import url(http://fonts.googleapis.com/css?family=Permanent+Marker|Rock+Salt);
+
 
 #board {
-  font-family: monospace;
   background-color: #f5feff;
+  position: relative;
   margin: 0;
   padding: 0;
-  position: relative;
+  font-family: courier;
+}
+
+.marker{
+font-family: 'Permanent Marker', cursive;
+}
+
+.pen{
+font-family: 'Rock Salt', cursive;
+}
+
+#palette{
+  margin-left: 18%;
+  font-family: 'Rock Salt', cursive;
+}
+
+#pen-font{
+  border: solid black;
+  padding-left: 3px;
+  width: 45%;
+  margin-top: 2px;
+  margin-left: 20%;
+  margin-bottom: 2px;
+  border-radius: 20;
+}
+
+#pen-color{
+ border: solid black;
+  padding-left: 3px;
+  width: 55%;
+  margin-top: 5%;
+  margin-left: 15%;
+  margin-bottom: 2px;
+  border-radius: 20;
+}
+
+#controls {
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 150px;
+  height: 150px;
+  background-color: #f1e09c;
+  box-shadow: -2px 2px 5px #544;
 }
 
 .post-it {
@@ -16,7 +59,7 @@
   width: 150px;
   height: 150px;
   background-color: #f1e09c;
-  box-shadow: -2px 2px 5px #555;
+  box-shadow: -2px 2px 5px #544;
   overflow: hidden;
   text-align: left;
 }
@@ -35,7 +78,7 @@
 }
 
 .header .close:hover {
-   color:#eb7475;
+ color:#eb7475;
 }
 
 

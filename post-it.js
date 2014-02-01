@@ -27,7 +27,7 @@ function initialize() {
 
   $(document).click(function(event) {
     //if there click target isn't a post-it, nor the span.close area then initialize postit
-    if ((($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("content")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false)){
+    if ((($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("post-it")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false) && ($(event.target).is('#controls') === false) && ($(event.target).hasClass("content") === false)) {
 
       id = count.value
 
@@ -71,3 +71,4 @@ function initialize() {
 $(document).ready(function(){
   initialize()
 })
+
