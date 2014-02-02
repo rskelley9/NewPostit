@@ -1,5 +1,16 @@
-var getAction = function(actions) {
- return actions[Math.floor(Math.random() * actions.length)];
+
+var getAction = function(effects) {
+ return effects[Math.floor(Math.random() * effects.length)];
+}
+
+var showPostIt = function(id,array) {
+  var randomAction = getAction(array)
+  $("#"+id).show(randomAction)
+  $("#"+id).resizable({
+      animate: true,
+      alsoResize: ".content",
+      aspectRatio: 1 / 1
+    });
 }
 
 var movePostIt = function(id,x,y) {
@@ -7,19 +18,10 @@ var movePostIt = function(id,x,y) {
   $("#"+id).css("left",x);
 };
 
-
-var showPostIt = function(id,array) {
-  var randomAction = getAction(array)
-  $("#"+id).show(randomAction)
-  console.log(randomAction)
-}
-
-
 var count = {
   value: 0,
-  count: function() {
-    this.value = this.value + 1
-
+  plusOne: function() {
+    ++this.value
   }
 
 }
@@ -44,11 +46,11 @@ function initialize() {
 
       movePostIt(id,event.clientX,event.clientY)
 
-      actions = ["clip","blind","bounce","explode","highlight", "shake", "scale", "pulsate", "slide", "size", "fold", "puff"]
+      effects = ["clip","blind","bounce","explode","highlight", "shake", "scale", "pulsate", "slide", "size", "fold", "puff"]
 
-      showPostIt(id, actions)
+      showPostIt(id, effects)
 
-      count.count()
+      count.plusOne()
     }
     else if ($(event.target).hasClass("close") === true)
     {
