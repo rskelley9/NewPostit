@@ -66,6 +66,7 @@
 }
 
 .post-it {
+  display:none;
   position: absolute !important;
   top: 0px;
   width: 150px;
