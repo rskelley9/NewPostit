@@ -28,6 +28,7 @@
 #palette{
   margin-left: 18%;
   font-family: 'Rock Salt', cursive;
+  margin-bottom: 5px;
 }
 
 #pen-font{
@@ -54,6 +55,21 @@
  margin-left: 15%;
  margin-bottom: 2px;
  border-radius: 20;
+}
+
+#clear-board{
+ border: solid black;
+ font-family: 'Patrick Hand', cursive;
+ padding-left: 10px;
+ width: 33%;
+ margin-top: 5%;
+ margin-left: 25%;
+ margin-bottom: 2px;
+ border-radius: 20;
+}
+
+#clear-board:hover, #pen-font:hover{
+  background-color: #eb7475;
 }
 
 #controls {
