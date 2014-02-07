@@ -86,9 +86,15 @@
   float: left;
 }
 
-.header .erase:hover, .header .close:hover {
+.header .erase:hover, .header .close:hover, .header .note-font:hover {
   color:#eb7475;
 }
+
+.header .note-font {
+  color:#bb9b1a;
+  padding-right: 5px;
+}
+
 
 .header .close {
   color:#bb9b1a;
