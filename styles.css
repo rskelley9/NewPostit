@@ -75,6 +75,8 @@
   box-shadow: -2px 2px 5px #544;
   overflow: hidden;
   text-align: left;
+  min-height: 100px;
+  min-width:100px;
 }
 
 .content:focus {
@@ -92,7 +94,8 @@
 
 .header .note-font {
   color:#bb9b1a;
-  padding-right: 5px;
+  padding-left: 10px;
+  float: left;
 }
 
 
