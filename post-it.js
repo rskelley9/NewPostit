@@ -1,3 +1,43 @@
+var findFont = function(note){
+
+  var classArray = note.find('.content').attr('class').split(' ')
+
+  if (classArray.length > 1)
+  {
+    note.find('.content').attr('class').split(' ')[1]
+  }
+  else
+  {
+    " "
+  }
+
+};
+
+var saveNotes = function(){
+
+  var notesArray = []
+
+  var $notes = $('.post-it')
+
+  $notes.each(function(i, e){
+
+    var content = $(e).find('.content').text()
+
+    var position = $(e).position()
+
+    var font = findFont($(e))
+
+    notesArray.push({ Index: i, Font: font, Content: content, Position: position })
+
+  })
+
+  //requires json2.js plugin
+  var jsonStr = JSON.stringify(notesArray);
+
+  localStorage.setItem("notes", jsonStr);
+};
+
+
 
 var getAction = function(effects) {
  return effects[Math.floor(Math.random() * effects.length)];
@@ -26,11 +66,26 @@ var count = {
 
 }
 
+
+var loadNotes = function(){
+  var storedNotes = localStorage.getItem("notes");
+     if (storedNotes) {
+        var notesArray = JSON.parse(storedNotes);
+        count = notesArray.length;
+
+        var i;
+        for (i = 0; i < count; i++) {
+            var storedNote = notesArray[i];
+            addNewNote(storedNote.Class, storedNote.Title, storedNote.Content);
+        }
+    }
+}
+
 function initialize() {
 
   $(document).click(function(event) {
     // if there click target isn't a post-it, nor the span.close area then initialize postit
-    if ((($(event.target).hasClass("post-it")) === false) && (($(event.target).is("#clear-board")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("note-font")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false) && ($(event.target).is('#controls') === false) && ($(event.target).hasClass("content") === false) && ($(event.target).is("palette") === false) && ($(event.target).is("#pen-font") === false) && ($(event.target).is("#pen-color") === false)) {
+    if ((($(event.target).hasClass("post-it")) === false)  && (($(event.target).is("#load")) === false) && (($(event.target).is("#clear-board")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("note-font")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false) && ($(event.target).is('#controls') === false) && ($(event.target).hasClass("content") === false) && ($(event.target).is("palette") === false) && ($(event.target).is("#pen-font") === false) && ($(event.target).is("#pen-color") === false)) {
 
       id = count.value
 
@@ -54,6 +109,8 @@ function initialize() {
     }
     else if ($(event.target).hasClass("close") === true)
     {
+      saveNotes();
+
       $(event.target).parents(":eq(1)").fadeOut({duration:1100})
       // $(event.target).parents(":eq(1)").fadeIn({duration:1000})
       //erase text with fadeOut on click
@@ -88,6 +145,10 @@ function initialize() {
       {
         noteContent.addClass('marker')
       }
+    }
+    else if ($(event.target).is("#load"))
+    {
+      loadNotes();
     }
     else {
       $(event.target).focus()

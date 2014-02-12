@@ -72,6 +72,21 @@
   background-color: #eb7475;
 }
 
+#load{
+ border: solid black;
+ font-family: 'Patrick Hand', cursive;
+ padding-left: 10px;
+ width: 33%;
+ margin-top: 5%;
+ margin-left: 25%;
+ margin-bottom: 2px;
+ border-radius: 20;
+}
+
+#load:hover, #pen-font:hover{
+  background-color: #eb7475;
+}
+
 #controls {
   margin-left: 20px;
   margin-top: 20px;
