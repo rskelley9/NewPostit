@@ -13,6 +13,10 @@ var findFont = function(note){
 
 };
 
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 var saveNotes = function(){
 
   var notesArray = []
@@ -26,7 +30,7 @@ var saveNotes = function(){
     var position = $(e).position()
 
     //changed from $(e)
-    var font = "marker"
+    var font = findFont($(e))
 
     notesArray.push({ Index: i, Font: font, Content: content, Position: position })
 
@@ -59,8 +63,23 @@ var movePostIt = function(id,x,y) {
   $("#"+id).css("left",x);
 };
 
+var getLastId = function(){
+  var postIts = $('.post-it')
+  var lastId = postIts.last().attr('id')
+  var finalId = parseInt(lastId) + 1
+
+  if (isNumber(finalId))
+  {
+  return finalId
+  }
+  else
+  {
+  return 0
+  }
+}
+
 var count = {
-  value: 1,
+  value: 1 + getLastId(),
   plusOne: function() {
     ++this.value
   }
@@ -77,13 +96,12 @@ var reconstructNote = function(font, content, position){
   }
   else
   {
-    var lastNoteId = $postItArray.last().attr('id')
-    var idNote = 1 + lastNoteId
+    var idNote = getLastId()
   }
 
   var newNote = "<div class='header'><span class='erase'>Erase</span><span class='note-font'>Font</span><span class='close'>X</span></div>"
 
-  var $note = $("#"+idNote)
+  var $note = $("#" + idNote)
 
   var $noteContent = $("#"+idNote+" .content")
 
@@ -95,7 +113,7 @@ var reconstructNote = function(font, content, position){
 
   $note.append("<div class='content "+font+"' contenteditable='true'>")
 
-  $noteContent.append(content)
+  $noteContent.append(content) //works
 
   movePostIt(idNote, position.left, position.top)
 
