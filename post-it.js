@@ -60,7 +60,7 @@ var movePostIt = function(id,x,y) {
 };
 
 var count = {
-  value: 0,
+  value: 1,
   plusOne: function() {
     ++this.value
   }
@@ -78,7 +78,7 @@ var reconstructNote = function(font, content, position){
   else
   {
     var lastNoteId = $postItArray.last().attr('id')
-    var idNote = ++lastNoteId
+    var idNote = 1 + lastNoteId
   }
 
   var newNote = "<div class='header'><span class='erase'>Erase</span><span class='note-font'>Font</span><span class='close'>X</span></div>"
@@ -128,13 +128,13 @@ function initialize() {
 
       var id = count.value
 
-      newPostIt = "<div class='header'><span class='erase'>Erase</span><span class='note-font'>Font</span><span class='close'>X</span></div>"
+      header = "<div class='header'><span class='erase'>Erase</span><span class='note-font'>Font</span><span class='close'>X</span></div>"
 
       $("#board").append("<div id='" + id + "' class='post-it'>");
 
       $("#"+id).draggable({scroll: true, scrollSensitivity: 20, scrollSpeed: 20});
 
-      $("#"+id).html(newPostIt)
+      $("#"+id).html(header)
 
       $("#"+id).append("<div class='content' contenteditable='true'>")
 
