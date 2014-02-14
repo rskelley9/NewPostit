@@ -72,7 +72,7 @@
   background-color: #eb7475;
 }
 
-#load{
+#save{
  border: solid black;
  font-family: 'Patrick Hand', cursive;
  padding-left: 10px;
@@ -83,7 +83,7 @@
  border-radius: 20;
 }
 
-#load:hover, #pen-font:hover{
+#save:hover, #pen-font:hover{
   background-color: #eb7475;
 }
 

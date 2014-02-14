@@ -25,11 +25,12 @@ var saveNotes = function(){
 
     var position = $(e).position()
 
-    var font = findFont($(e))
+    //changed from $(e)
+    var font = "marker"
 
     notesArray.push({ Index: i, Font: font, Content: content, Position: position })
 
-  })
+  });
 
   //requires json2.js plugin
   var jsonStr = JSON.stringify(notesArray);
@@ -41,7 +42,7 @@ var saveNotes = function(){
 
 var getAction = function(effects) {
  return effects[Math.floor(Math.random() * effects.length)];
-}
+};
 
 var showPostIt = function(id,array) {
   var randomAction = getAction(array)
@@ -51,7 +52,7 @@ var showPostIt = function(id,array) {
     alsoResize: ".content",
     aspectRatio: 1 / 1
   });
-}
+};
 
 var movePostIt = function(id,x,y) {
   $("#"+id).css("top",y);
@@ -64,30 +65,68 @@ var count = {
     ++this.value
   }
 
-}
+};
+
+var reconstructNote = function(font, content, position){
+
+  var $postItArray = $('.post-it')
+
+  if ($postItArray.length < 1)
+  {
+    var idNote = 0
+  }
+  else
+  {
+    var lastNoteId = $postItArray.last().attr('id')
+    var idNote = ++lastNoteId
+  }
+
+  var newNote = "<div class='header'><span class='erase'>Erase</span><span class='note-font'>Font</span><span class='close'>X</span></div>"
+
+  var $note = $("#"+idNote)
+
+  var $noteContent = $("#"+idNote+" .content")
+
+  $("#board").append("<div id='" + idNote + "' class='post-it'>");
+
+  $note.draggable({scroll: true, scrollSensitivity: 20, scrollSpeed: 20});
+
+  $note.html(newNote)
+
+  $note.append("<div class='content "+font+"' contenteditable='true'>")
+
+  $noteContent.append(content)
+
+  movePostIt(idNote, position.left, position.top)
+
+  effects = ["clip","blind","bounce","explode","highlight", "shake", "scale", "pulsate", "slide", "size", "fold", "puff"]
+
+  showPostIt(idNote, effects)
+
+};
 
 
 var loadNotes = function(){
   var storedNotes = localStorage.getItem("notes");
-     if (storedNotes) {
-        var notesArray = JSON.parse(storedNotes);
-        count = notesArray.length;
+  if (storedNotes) {
+    var notesArray = JSON.parse(storedNotes);
+    var arrLength = notesArray.length;
 
-        var i;
-        for (i = 0; i < count; i++) {
-            var storedNote = notesArray[i];
-            addNewNote(storedNote.Class, storedNote.Title, storedNote.Content);
-        }
+    var i;
+    for (i = 0; i < arrLength; i++) {
+      var storedNote = notesArray[i];
+      reconstructNote(storedNote.Font, storedNote.Content, storedNote.Position);
     }
-}
+  }
+};
 
 function initialize() {
 
   $(document).click(function(event) {
-    // if there click target isn't a post-it, nor the span.close area then initialize postit
-    if ((($(event.target).hasClass("post-it")) === false)  && (($(event.target).is("#load")) === false) && (($(event.target).is("#clear-board")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("note-font")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false) && ($(event.target).is('#controls') === false) && ($(event.target).hasClass("content") === false) && ($(event.target).is("palette") === false) && ($(event.target).is("#pen-font") === false) && ($(event.target).is("#pen-color") === false)) {
 
-      id = count.value
+    if ((($(event.target).hasClass("post-it")) === false)  && (($(event.target).is("#save")) === false) && (($(event.target).is("#clear-board")) === false) && (($(event.target).hasClass("header")) === false) && (($(event.target).hasClass("note-font")) === false) && (($(event.target).hasClass("close")) === false) && (($(event.target).hasClass("erase")) === false) && ($(event.target).is('#controls') === false) && ($(event.target).hasClass("content") === false) && ($(event.target).is("palette") === false) && ($(event.target).is("#pen-font") === false) && ($(event.target).is("#pen-color") === false)) {
+
+      var id = count.value
 
       newPostIt = "<div class='header'><span class='erase'>Erase</span><span class='note-font'>Font</span><span class='close'>X</span></div>"
 
@@ -109,11 +148,9 @@ function initialize() {
     }
     else if ($(event.target).hasClass("close") === true)
     {
-      saveNotes();
 
       $(event.target).parents(":eq(1)").fadeOut({duration:1100})
-      // $(event.target).parents(":eq(1)").fadeIn({duration:1000})
-      //erase text with fadeOut on click
+
     }
 
     else if ($(event.target).hasClass("erase") === true)
@@ -146,18 +183,22 @@ function initialize() {
         noteContent.addClass('marker')
       }
     }
-    else if ($(event.target).is("#load"))
+    else if ($(event.target).is("#save"))
     {
-      loadNotes();
+      localStorage.clear();
+      saveNotes();
     }
     else {
       $(event.target).focus()
     }
   })
 
-}
+};
 
 $(document).ready(function(){
+
+  loadNotes();
+
   initialize()
-})
+});
 

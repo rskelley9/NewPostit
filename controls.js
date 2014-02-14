@@ -36,5 +36,6 @@ $(document).ready(function(){
 
   $('#clear-board').on('click', function(){
     $('.post-it').remove();
+    localStorage.clear();
   });
 });

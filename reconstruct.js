@@ -35,8 +35,8 @@ var reconstructNote = function(font, content, position){
   //move to past position
   movePostIt(id,position.left, position.top)
 
-   effects = ["clip","blind","bounce","explode","highlight", "shake", "scale", "pulsate", "slide", "size", "fold", "puff"]
+  effects = ["clip","blind","bounce","explode","highlight", "shake", "scale", "pulsate", "slide", "size", "fold", "puff"]
 
-   showPostIt(id, effects)
+  showPostIt(id, effects)
 
 };
